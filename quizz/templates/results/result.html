@@ -1,0 +1,162 @@
+{% extends "home/wrapper.html" %}
+{% block charts %}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1>Выши результаты готовы!</h1>
+        </div>
+        <div class="row">
+          <div class="left-sect">
+        </section>
+
+        <div class="center">
+        <table class="table_col">
+       <colgroup>
+           <col style="background:#40f768;">
+       </colgroup>
+       <tr>
+         <th>показатель</th>
+         <th>Значение показателя</th>
+         <th>Значение для сравнения</th>
+         <th>Вывод</th>
+         </tr>
+       <tr>
+         <td>Чистая приведеная стоимость</td>
+         <td>{{NPV}}</td>
+         <td>0</td>
+         <td> {{resultnpv}}</td>
+         </tr>
+         <tr>
+           <td>Ставка дисконтирования</td>
+           <td>{{r}}</td>
+           <td></td>
+           </tr>
+           <tr>
+             <td>Внутренняя норма доходности</td>
+             <td>{{IRR}}</td>
+             <td>{{zhelaemyi_uroven}}</td>
+             <td> {{resultirr}} </td>
+             </tr>
+             <tr>
+               <td>Индекс рентабильности</td>
+               <td>{{PI}}</td>
+               <td>1</td>
+               <td>{{resultpi}}</td>
+               </tr>
+               <tr>
+                 <td>Дисконтированный срок окупаемости</td>
+                 <td>{{OKUPAEMOST}}</td>
+                 <td> - </td>
+                 <td> - </td>
+                 </tr>
+
+     </table>
+      </div>
+  </div>
+  <div class="text-center">
+<h4>Ниже приведены графики для наглядной демонстрации полученных показателей:</h4><br/>
+</div>
+
+
+  {% endblock %}
+  <div class="right-sect">
+    {% block addcharts %}
+    <script type="text/javascript">
+    google.charts.load('current', {
+  packages: ['corechart', 'bar']
+});
+google.charts.setOnLoadCallback(drawRightY);
+
+function drawRightY() {
+  var data = google.visualization.arrayToDataTable([
+    ['Показатель', 'Показатель вашего проекта', ' минимально удовлетворимое для данного показателя число'],
+    ['NPV', {{chartNPV}}, 0],
+    ['IRR', {{IRR}}, {{zhelaemyi_uroven}}],
+    ['PI', {{PI}}, 1]
+  ]);
+
+  var materialOptions = {
+    chart: {
+      title: 'Сравнение показателей вашего проекта с минимально удовлетворительными для данного показателя числом',
+      subtitle: 'Основано на рассчетах'
+    },
+    hAxis: {
+      title: 'Total Population',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'Показатели'
+    },
+    bars: 'horizontal',
+    axes: {
+      y: {
+        0: {
+          side: 'right'
+        }
+      }
+    }
+  };
+  var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+  materialChart.draw(data, materialOptions);
+}
+</script>
+
+
+
+
+
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawBackgroundColor);
+
+  function drawBackgroundColor() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'NPV');
+
+        data.addRows(
+          {{Spisok_spiskov}}
+        );
+
+        var options = {
+          chart: {
+            title: 'Размер чистой приведеной стоимости в соотвествии с периодом',
+            subtitle: 'Основано на рассчетах'
+          },
+          hAxis: {
+            title: 'ПЕРИОД'
+          },
+          vAxis: {
+            title: 'РАЗМЕР NPV'
+          },
+          backgroundColor: '#f1f8e9'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart2_div'));
+        chart.draw(data, options);
+      }
+</script>
+
+
+
+
+<div class="chart">
+  <div id="chart_div" style = "width: 1000px; height: 800px; margin: 0 auto"></div>
+</div><br/>
+<div class="text-center">
+<h4>График зависимости размера Чистой приведеной стоимости проекта от рассчетного периода:</h4>
+</div><br/>
+<div class="chart">
+  <div id="chart2_div" style = "width: 1000px; height: 800px; margin: auto"></div>
+</div>
+
+
+
+    {% endblock %}
+  </div>

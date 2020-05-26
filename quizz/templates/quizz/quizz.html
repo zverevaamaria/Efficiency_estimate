@@ -1,0 +1,85 @@
+{% extends "home/wrapper.html" %}
+{% block content %}
+<section class = "jumbotron text-center bg-light">
+    <div class="py-4 text-center">
+    <h2>Пройдите опрос для выбора метода оценки эффективноси вашего инфестиционного проекта</h2>
+    </div>
+</section>
+  <div class="py-2 text-center">
+<h5>Продолжительность вашего проекта:</h5>
+</div>
+<div class="row">
+
+          <div class="col-md-6 mb-3">
+            <form action="calculation/" method="POST">
+                {% csrf_token %}
+            <input type="number" name="longesity" class="form-control" id="longesity" placeholder="Длительность проекта"  required name="longesity">
+          </div>
+          <div class="col-md-6 mb-3">
+            <select class="custom-select d-block w-100" id="longesity_measurment" required name = "longesity_measurment">
+          <option>лет</option>
+          <option>кварталов</option>
+          <option>месяцев</option>
+          <option>дней</option>
+        </select>
+          </div>
+              <div class="col-md-6 mb-3">
+                  <label for="lastName">Выберите частоту поступления денежных потоков</label>
+              </div>
+              <div class="col-md-6 mb-3">
+                <select class="custom-select d-block w-100" id="frequency" required  name = "frequency">
+              <option>каждый год</option>
+              <option>каждый квартал</option>
+              <option>каждый месяц</option>
+              <option>каждую неделю</option>
+              <option>каждый день</option>
+
+            </select>
+              </div>
+              </div>
+              <div class="py-3 text-center">
+              <h5>Выберите тип вашего предприятия</h5>
+              </div>
+                  <select class="custom-select d-block w-100" id="company_type" required name="company_type">
+                <option>ОАО(открытое акционерное общество)</option>
+                <option>ЗАО(закрытое акционерное общество)</option>
+                <option>ООО(общество с ограниченной ответвенностью)</option>
+                <option>другое</option>
+              </select>
+  <div class="col-md-6 mb-3">
+  <p>Собираетесь ли вы брать займ(кредит)</p>
+    </div>
+       <div class="col-md-6 mb-3">
+         <select class="custom-select d-block w-100" id="company_type" required name="loan_or_not">
+       <option>да</option>
+       <option>нет</option>
+     </select>
+       </div>
+
+    <div class="py-3 text-center">
+    <h5>Обладаете ли вы данными о доходности собственного капитала компании</h5>
+    </div>
+    <select class="custom-select d-block w-100" id="profitability_info" required name="profitability_info">
+  <option>да</option>
+  <option>нет</option>
+</select>
+  <div class="py-3 text-center">
+    <center>
+    <p class="lead">
+        <button type="submit"  class="btn btn-lg btn-secondary" name="button">Отправить</button>
+      </p>
+   </center>
+   </div>
+
+
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}

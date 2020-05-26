@@ -1,0 +1,103 @@
+{% extends "calculation/calculationwrapper.html" %}
+{% block continue %}
+<div class="row">
+{% if discont_type == 'CUMUL' %}
+<div class="col-md-6 mb-3">
+<p>Введите премию за риск. Если у вас нет таких данных,то введите ноль и мы рассчитаем ее автоматически</p>
+  </div>
+     <div class="col-md-6 mb-3">
+     <input type="number" name="premia" class="premia" id="investments" placeholder="Введите премию" >
+     </div>
+  <div class="col-md-6 mb-3">
+  <p>Выберите тип проекты для рассчета премии за риск</p>
+  </div>
+  <div class="col-md-6 mb-3">
+    <select class="custom-select d-block w-100" name="project_type" id="project_type">
+  <option>Проект, поддерживающий производство</option>
+  <option>расширение производства</option>
+  <option>выход на новые рынки</option>
+  <option>смежные области бизнеса (новый продукт)</option>
+  <option>новые отрасли</option>
+  </select>
+  </div>
+{% elif discont_type == 'WACC+R' %}
+{% if loan_or_not == 'да' %}
+<div class="row">
+  <div class="col-sm">
+    Заемные средства в % (% от всех инвестиций)
+  </div>
+  <div class="col-sm">
+      <input type="number" class="form-control" id="pocents_of_loan" placeholder=""  required name="pocents_of_loan" value= 0>
+  </div>
+  <div class="col-sm">
+    Собственные средства в % (% от всех инвестиций)
+  </div>
+  <div class="col-sm">
+      <input type="number" class="form-control" id="pocents_of_self" placeholder="" required name="pocents_of_self" value = 100>
+  </div>
+    </div>
+    <div class="col-md-6 mb-3">
+    <p>Введите ставку кредитования по будующему займу</p>
+      </div>
+         <div class="col-md-6 mb-3">
+         <input type="number" name="stavka_kredit" class="stavka_kredit" id="stavka" placeholder="Введите ставку" >
+         </div>
+{% endif %}
+<div class="col-md-6 mb-3">
+<p>Введите среднюю ставку доходности ваших акций на фондовом рынке</p>
+  </div>
+     <div class="col-md-6 mb-3">
+     <input type="number" name="stav" class="stavka" id="stavka" placeholder="Введите ставку" >
+     </div>
+  <div class="col-md-6 mb-3">
+  <p>Выведите коэфициент чувствительности цены ваших акций к изменению цен на рынке</p>
+  </div>
+  <div class="col-md-6 mb-3">
+    <input type="text" name="beta" class="beta" id="beta" placeholder="Введите ставку" >
+  </div>
+  <div class="col-sm">
+ <select class="custom-select d-block w-100" id="company_type" required name="loan_or_not">
+<option>{{loan_or_not}}</option>
+</select>
+</div>
+{% elif discont_type == 'WACC' %}
+{% if loan_or_not == 'да' %}
+<div class="row">
+  <div class="col-sm">
+    Заемные средства в % (% от всех инвестиций)
+  </div>
+  <div class="col-sm">
+      <input type="number" class="form-control" id="pocents_of_loan" placeholder=""  required name="pocents_of_loan" value= 0>
+  </div>
+  <div class="col-sm">
+    Собственные средства в % (% от всех инвестиций)
+  </div>
+  <div class="col-sm">
+      <input type="number" class="form-control" id="pocents_of_self" placeholder="" required name="pocents_of_self" value = 100>
+  </div>
+    </div>
+{% endif %}
+<div class="col-md-6 mb-3">
+<p>Введите ставку доходности собственного капитала компании</p>
+  </div>
+     <div class="col-md-6 mb-3">
+     <input type="number" name="stav_doh" class="stavka_doh" id="stavka_doh" placeholder="Введите ставку" >
+     </div>
+          {% if loan_or_not == 'да' %}
+          <div class="row">
+     <div class="col-md-6 mb-3">
+     <p>Введите ставку кредитования по будующему займу</p>
+       </div>
+          <div class="col-md-6 mb-3">
+          <input type="number" name="stavka_kredit" class="stavka_kredit" id="stavka" placeholder="Введите ставку" >
+          </div>
+        </div>
+     {% endif %}
+     <div class="col-sm">
+    <select class="custom-select d-block w-100" id="company_type" required name="loan_or_not">
+   <option>{{loan_or_not}}</option>
+   </select>
+   </div>
+{% endif %}
+</div>
+{% endblock %}

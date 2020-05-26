@@ -1,0 +1,22 @@
+{% extends "home/wrapper.html" %}
+{% block content %}
+{% load static %}
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1>Оценка эффективности инвестиционных проектов</h1>
+      <p class="lead text-muted">Платформа, которая помогает инвесторам определить эффективность инвестиционного проекта</p>
+    </div>
+  </section>
+  <div class="text-center">
+    <img src="{% static 'home/images/invest.jpg' %}" alt="">
+  </div>
+  <center>
+  <p class="lead">
+      <a href="/quiz" class="btn btn-lg btn-secondary">Начать</a>
+    </p>
+ </center>
+
+</main>
+{% endblock %}

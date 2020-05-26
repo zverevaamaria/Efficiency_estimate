@@ -1,0 +1,67 @@
+{% extends "home/wrapper.html" %}
+{% block content %}
+{% load static %}
+<section class = "jumbotron text-center bg-light">
+  <div class="py-3 text-center">
+      <div class="text-center">
+  <h3>Способ рассчета эффективность вашего инвестиционного проекта выбран</h3>
+  </div>
+  <img src="{% static 'quizz/images/galka.png' %}">
+  </div>
+</section>
+  <div class="text-center">
+<h4>Осталось заполнить остальные данные:</h4>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-3">
+    <form action="results/" method="POST">
+      {% csrf_token %}
+    Тип вашей компании: {{company_type}}
+    <p>Срок вашего проекта: {{srok}} {{srok_measurment}}</p>
+    <div class="py-3 text-center">
+    <select class="custom-select d-block w-100" name="discont_type" id="project_type">
+  <option>{{discont_type}}</option>
+  </select>
+  </div>
+    {% block continue %}
+    {% endblock %}
+  </div>
+  <div class="col-md-6 mb-3">
+    <table class="table_col">
+   <colgroup>
+       <col style="background:#C7DAF0;">
+   </colgroup>
+   <tr>
+     <th>{{izmerenie}}</th>
+     <th>Денежный поток(притоки - оттоки) Не может быть отрицательным</th>
+      <th>Дополнительные инвестиции (со занком "+")</th>
+     </tr>
+   <tr>
+     <td>0(Инвестиции)</td>
+     <td><input type="number" name="investments" class="form-control" id="investments" placeholder="Введите инвестиции"  required></td>
+      <td><p>-</p></td>
+     </tr>
+     {%for i in periods %}
+     <tr>
+       <td>{{i}}</td>
+       <td><input type="number" name="flow_{{i}}" class="form-control" id="investments" placeholder="Введите поток"  required></td>
+      <td><input type="number" name="investflows_{{i}}" value = "0" class="form-control" id="investments" placeholder="Введите доп. Инвестиции"  required></td>
+     </tr>
+     {% endfor %}
+ </table>
+  </div>
+</div>
+<div class="text-center">
+<button type="submit"  class="btn btn-lg btn-secondary" name="button">Рассчитать</button>
+<div>
+  <div class="py-3 text-center">
+<h4>Введите желаемый уровень доходности</h4>
+<input type="number" name="uroven" class="form-control" id="investments" placeholder="Введите значение(0-100)"  required>
+    </div>
+    <center>
+       <select class="custom-select d-block w-100" id="company_type" required name="qualit_period">
+      <option>{{qualit_period}}</option>
+      </select>
+      </center>
+</form>
+{% endblock %}

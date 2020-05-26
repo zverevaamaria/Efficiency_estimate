@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>efficiency estimate</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+      }
+      .table_col {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        width: 660px;
+        background: white;
+        text-align: left;
+        border-collapse: collapse;
+        color: #3E4347;
+        }
+    .table_col th:first-child, .table_col td:first-child {
+        color: #F5F6F6;
+        border-left: none;
+        }
+     .table_col th {
+        font-weight: normal;
+        border-bottom: 2px solid #F5E1A6;
+        border-right: 20px solid white;
+        border-left: 20px solid white;
+        padding: 8px 10px;
+        }
+      .table_col td {
+        border-right: 20px solid white;
+        border-left: 20px solid white;
+        padding: 12px 10px;
+        color: #8b8e91;
+         }
+         .left-sect
+         {
+           width: 50%;
+         }
+         .right-sect
+         {
+           width: 50%;
+         }
+         .hidden
+         {
+           opacity: 0;
+         }
+         
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    {% block charts %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Оценка инвестиционных проектов</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Контакты</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    </header>
+    {% block content %}
+        {% endblock %}
+        {% block addcharts %}
+        {% endblock %}
+  </body>
+  </html>

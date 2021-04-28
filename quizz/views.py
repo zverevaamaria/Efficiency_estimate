@@ -275,12 +275,7 @@ def get_infliation():
     return infliation
     #нахождение ставки облигаций
 def get_oblig():
-    url2 = 'https://ycharts.com/indicators/30_year_mortgage_rate'
-    r2 = requests.get(url2)
-    soup2 = bs(r2.content, 'html.parser')
-    year_oblig = str(soup2.find("div", { "id" : "pgNameVal" }).text)
-    year_oblig = year_oblig[:-24]
-    year_oblig = float(year_oblig)
+    year_oblig = 3.04
     return year_oblig
 
      #Функция для подсчета npv

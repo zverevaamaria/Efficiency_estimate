@@ -59,7 +59,7 @@ soupsieve==2.0.1
 sqlparse==0.3.0
 Twisted==20.3.0
 uritemplate==3.0.1
-urllib3==1.25.8
+urllib3==1.26.5
 w3lib==1.21.0
 webdriver-manager==2.5.1
 whitenoise==5.1.0
